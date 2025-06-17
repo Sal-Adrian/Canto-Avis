@@ -4980,7 +4980,7 @@ async function createPlayer() {
     fileName += audioData['file-name'].slice(-4).toLowerCase();
     audioPlayer.src = fileName; 
   }
-  document.getElementById('audio-player1').src = bird.file;
+  
   document.getElementById('audio-player1').controls = true;
 }
 
