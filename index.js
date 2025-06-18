@@ -4913,7 +4913,9 @@ window.onload = async (e) => {
   setInterval(() => {
     const currIndex = birds[0].getCurrIndex() + 1;
     const aud = document.getElementById('audio-player'+currIndex);
-    if(aud.currentTime > birds[0].endInSeconds - 2) {
+    if(aud.currentTime < 1) {
+      linearIncrease(aud);
+    } else if(aud.currentTime > birds[0].endInSeconds - 2) {
       linearDecrease(aud);}
   }, 1000);
 
@@ -5018,7 +5020,6 @@ function playNextBird() {
   newBird.play();
   newBird.controls = true;
   newBird.volume = 0;
-  linearIncrease(newBird);
   birds[0].endInSeconds = timeToSec(birds[0].getBird().length);
 }
 
