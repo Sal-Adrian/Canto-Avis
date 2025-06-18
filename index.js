@@ -4918,38 +4918,35 @@ window.onload = async (e) => {
   }, 1000);
 
   
-  document.getElementById('nextBtn').addEventListener('click', (e) => {
+  $('#nextBtn').on('click', (e) => {
     playNextBird();
   });
   
-  document.getElementById('loopBtn').addEventListener('click', (e) => {
+  $('#loopBtn').on('click', (e) => {
     toggleLoop();
   });
   
-  document.getElementById('queueBtn').addEventListener('click', (e) => {
-    const queue = document.getElementById('grid-con');
-    let newName = queue.className;
-    if(newName.indexOf('open') > -1) {
-      document.getElementById('player-con').className = "center";
-      newName = newName.replace('open', 'close');
+  $('#queueBtn').on('click', (e) => {
+    const queue = $('#grid-con');
+    if(queue.hasClass('open-queue')) {
+      $('#player-con').attr('class', 'center');
+      queue.toggleClass('open-queue close-queue');
   
       for(let i = 1; i < 11; i++) {
-        document.getElementById("Q"+i).className = "hide";
+        $("#Q"+i).attr('class', 'hide');
       }
     } else {
-      document.getElementById('player-con').className = "";
-      newName = newName.replace('close', 'open');
+      $('#player-con').attr('class', '');
+      queue.toggleClass('close-queue open-queue');
   
       for(let i = 1; i < 11; i++) {
         if(i % 2 == 0) {
-          document.getElementById("Q"+i).className = "";
+          $("#Q"+i).attr('class', '');
         } else {
-          document.getElementById("Q"+i).className = "dark-queue";
+          $("#Q"+i).attr('class', 'dark-queue');
         }
       }
     }
-    
-    queue.className = newName;
   });
 }
 
@@ -4959,11 +4956,11 @@ async function createPlayer() {
   birds.push(new Birds(rec.recordings));
 
   const bird = birds[0].getBird();
-  document.getElementById('player-details').innerHTML = createDetails(bird);
+  $('#player-details').html(createDetails(bird));
 
   updateQueue();
   
-  const audioContainer = document.getElementById('audio-players');
+  const audioContainer = $('#audio-players');
   for(let i = birds[0].getCount(); i > 0 ; i--) {
     const audioPlayer = document.createElement('audio');
     audioPlayer.id = "audio-player"+i;
@@ -4998,8 +4995,8 @@ function createDetails(bird) {
 
 function updateQueue() {
   for(let i = 1; i < 11; i++) {
-    const queueItem = document.getElementById("Q"+i);
-    queueItem.innerHTML = birds[0].ithNextBird(i).en;
+    const queueItem = $("#Q"+i);
+    queueItem.html(birds[0].ithNextBird(i).en);
   }
 }
 
@@ -5013,7 +5010,7 @@ function playNextBird() {
   
   birds[0].nextBird();
   const bird = birds[0].getBird();
-  document.getElementById('player-details').innerHTML = createDetails(bird);
+  $('#player-details').html(createDetails(bird));
 
   currIndex = birds[0].getCurrIndex() + 1;
   const newBird = document.getElementById('audio-player'+currIndex);
@@ -5031,9 +5028,9 @@ function toggleLoop() {
   aud.loop = !aud.loop;
   
   if(aud.loop) {
-    document.getElementById('loopBtn').src = "images/loop-on.svg"
+    $('#loopBtn').attr('src', 'images/loop-on.svg');
   } else {
-    document.getElementById('loopBtn').src = "images/loop-off.svg"
+    $('#loopBtn').attr('src','images/loop-off.svg');
   }
 }
 
