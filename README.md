@@ -5,4 +5,7 @@ Canto Avis is a music player for bird sounds using [Xeno-Canto](https://xeno-can
 The website is [HERE](https://sal-adrian.github.io/Canto-Avis/).
 
 ## Server Version:
-This version is static and uses files from Xeno-Canto that were downloaded in advanced. If you'd like to make custom API calls, then you can use [this version](https://github.com/Sal-Adrian/Canto-Avis-S) that requires a server and API key. This static version has more consistant performace and does not required setup.
+
+### Depracated: The sever version is no longer functional due to measures Xeno-Canto took to prevent agressive web scraping.
+
+~~This version is static and uses files from Xeno-Canto that were downloaded in advanced. If you'd like to make custom API calls, then you can use [this version](https://github.com/Sal-Adrian/Canto-Avis-S) that requires a server and API key. This static version has more consistant performace and does not required setup.~~
